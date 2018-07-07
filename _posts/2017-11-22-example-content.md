@@ -1,13 +1,14 @@
 ---
-
-layout: post title: Example content description:
-
-> This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
+layout: post
+title: Example content
+description: >
+  This is a normal paragraph following a header.
+  GitHub is a code hosting platform for version control and collaboration.
+  It lets you and others work together on projects from anywhere.
 tags: [hydejack]
-----------------
+---
 
-Text can be **bold**, *italic*, or ~~strikethrough~~.
+Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](another-page).
 
@@ -15,13 +16,11 @@ There should be whitespace between paragraphs.
 
 There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
 
-Header 1
-========
+# Header 1
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
-Header 2
---------
+## Header 2
 
 > This is a blockquote following a header.
 >
@@ -46,15 +45,15 @@ end
 
 #### Header 4
 
--	This is an unordered list following a header.
--	This is an unordered list following a header.
--	This is an unordered list following a header.
+*   This is an unordered list following a header.
+*   This is an unordered list following a header.
+*   This is an unordered list following a header.
 
 ##### Header 5
 
-1.	This is an ordered list following a header.
-2.	This is an ordered list following a header.
-3.	This is an ordered list following a header.
+1.  This is an ordered list following a header.
+2.  This is an ordered list following a header.
+3.  This is an ordered list following a header.
 
 ###### Header 6
 
@@ -67,37 +66,37 @@ end
 
 ### There's a horizontal rule below this.
 
----
+* * *
 
 ### Here is an unordered list:
 
--	Item foo
--	Item bar
--	Item baz
--	Item zip
+*   Item foo
+*   Item bar
+*   Item baz
+*   Item zip
 
 ### And an ordered list:
 
-1.	Item one
-2.	Item two
-3.	Item three
-4.	Item four
+1.  Item one
+1.  Item two
+1.  Item three
+1.  Item four
 
 ### And a nested list:
 
--	level 1 item
-	-	level 2 item
-	-	level 2 item
-	-	level 3 item
-	-	level 3 item
--	level 1 item
-	-	level 2 item
-	-	level 2 item
-	-	level 2 item
--	level 1 item
-	-	level 2 item
-	-	level 2 item
--	level 1 item
+- level 1 item
+  - level 2 item
+  - level 2 item
+    - level 3 item
+    - level 3 item
+- level 1 item
+  - level 2 item
+  - level 2 item
+  - level 2 item
+- level 1 item
+  - level 2 item
+  - level 2 item
+- level 1 item
 
 ### Small image
 
@@ -107,15 +106,20 @@ end
 
 ![](https://guides.github.com/activities/hello-world/branching.png)
 
+
 ### Definition lists
 
-Name: Godzilla
+Name
+: Godzilla
 
-Born: 1952
+Born
+: 1952
 
-Birthplace: Japan
+Birthplace
+: Japan
 
-Color: Green
+Color
+: Green
 
 ```
 Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this. Or is it?
@@ -125,79 +129,89 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 The final element.
 ```
 
-Hydejack Exclusives
--------------------
-
-Hydejack offers a few additional features to markup your markdown. Don't worry, these are merely CSS classes added with kramdown's `{:.my-class}` syntax, so that your posts remain compatible with other Jekyll themes.
+## Hydejack Exclusives
+Hydejack offers a few additional features to markup your markdown.
+Don't worry, these are merely CSS classes added with kramdown's `{:.my-class}` syntax,
+so that your posts remain compatible with other Jekyll themes.
 
 ### Message Boxes
-
-You can add a message box by adding the `message` class to a paragraph. {:.message}
+You can add a message box by adding the `message` class to a paragraph.
+{:.message}
 
 ### Faded text
-
-You can add gray text by adding the `faded` class. {:.faded}
+You can add gray text by adding the `faded` class.
+{:.faded}
 
 ### Lead Paragraphs
-
-You can add large text by adding the `lead` class to a paragraph. {:.lead}
+You can add large text by adding the `lead` class to a paragraph.
+{:.lead}
 
 ### Lead Quotes
-
-> You can make a quote "pop out" by adding the `lead` class to a quote. {:.lead}
+> You can make a quote "pop out" by adding the `lead` class to a quote.
+{:.lead}
 
 ### Lead Images
-
 You can make an image span the full width by adding the `lead` class:
 
-![Full-width image](https://placehold.it/800x100)\{:.lead}
+![Full-width image](https://placehold.it/800x100){:.lead}
 
-Tables
-------
-
+## Tables
 Large (data) tables:
 
-| Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned |
-|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|
-| First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell |
-| Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz |
-| Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar |
-| Second body     |              |                |               | Second body     |              |                |               | Second body     |              |                |               | Second body     |              |                |               |
-| 2 line          |              |                |               | 2 line          |              |                |               | 2 line          |              |                |               | 2 line          |              |                |               |
-| Footer row      |              |                |               | Footer row      |              |                |               | Footer row      |              |                |               | Footer row      |              |                |               |
+| Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  |
+|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|
+| First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    |
+| Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            |
+| Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            |
+| Second body     |            |                 |                | Second body     |            |                 |                | Second body     |            |                 |                | Second body     |            |                 |                |
+| 2 line          |            |                 |                | 2 line          |            |                 |                | 2 line          |            |                 |                | 2 line          |            |                 |                |
+| Footer row      |            |                 |                | Footer row      |            |                 |                | Footer row      |            |                 |                | Footer row      |            |                 |                |
 
 Prevent line breaks within cells by adding the `scroll-table` class to a table:
 
-| Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned |
-|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|
-| First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell |
-| Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz |
-| Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar |
-| Second body     |              |                |               | Second body     |              |                |               | Second body     |              |                |               | Second body     |              |                |               |
-| 2 line          |              |                |               | 2 line          |              |                |               | 2 line          |              |                |               | 2 line          |              |                |               |
-| Footer row      |              |                |               | Footer row      |              |                |               | Footer row      |              |                |               | Footer row      |              |                |               |
-
-\{:.scroll-table}
+| Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  |
+|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|
+| First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    |
+| Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            |
+| Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            |
+| Second body     |            |                 |                | Second body     |            |                 |                | Second body     |            |                 |                | Second body     |            |                 |                |
+| 2 line          |            |                 |                | 2 line          |            |                 |                | 2 line          |            |                 |                | 2 line          |            |                 |                |
+| Footer row      |            |                 |                | Footer row      |            |                 |                | Footer row      |            |                 |                | Footer row      |            |                 |                |
+{:.scroll-table}
 
 Flip the table by adding the `flip-table` class to a table:
 
-| Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned | Default aligned | Left aligned | Center aligned | Right aligned |
-|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|-----------------|:-------------|:--------------:|--------------:|
-| First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell | First body part | Second cell  |   Third cell   |   fourth cell |
-| Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz | Second line     | foo          |   **strong**   |           baz |
-| Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar | Third line      | quux         |      baz       |           bar |
-| 4th line        | quux         |      baz       |           bar | 4th line        | quux         |      baz       |           bar | 4th line        | quux         |      baz       |           bar | 4th line        | quux         |      baz       |           bar |
-| 5th line        | quux         |      baz       |           bar | 5th line        | quux         |      baz       |           bar | 5th line        | quux         |      baz       |           bar | 5th line        | quux         |      baz       |           bar |
-| 6th line        | quux         |      baz       |           bar | 6th line        | quux         |      baz       |           bar | 6th line        | quux         |      baz       |           bar | 6th line        | quux         |      baz       |           bar |
-| 7th line        | quux         |      baz       |           bar | 7th line        | quux         |      baz       |           bar | 7th line        | quux         |      baz       |           bar | 7th line        | quux         |      baz       |           bar |
-| 8th line        | quux         |      baz       |           bar | 8th line        | quux         |      baz       |           bar | 8th line        | quux         |      baz       |           bar | 8th line        | quux         |      baz       |           bar |
-| 9th line        | quux         |      baz       |           bar | 9th line        | quux         |      baz       |           bar | 9th line        | quux         |      baz       |           bar | 9th line        | quux         |      baz       |           bar |
-| 10th line       | quux         |      baz       |           bar | 10th line       | quux         |      baz       |           bar | 10th line       | quux         |      baz       |           bar | 10th line       | quux         |      baz       |           bar |
-
-\{:.flip-table}
+| Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  | Default aligned |Left aligned| Center aligned  | Right aligned  |
+|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|-----------------|:-----------|:---------------:|---------------:|
+| First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    | First body part |Second cell | Third cell      | fourth cell    |
+| Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            | Second line     |foo         | **strong**      | baz            |
+| Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            | Third line      |quux        | baz             | bar            |
+| 4th line        |quux        | baz             | bar            | 4th line        |quux        | baz             | bar            | 4th line        |quux        | baz             | bar            | 4th line        |quux        | baz             | bar            |
+| 5th line        |quux        | baz             | bar            | 5th line        |quux        | baz             | bar            | 5th line        |quux        | baz             | bar            | 5th line        |quux        | baz             | bar            |
+| 6th line        |quux        | baz             | bar            | 6th line        |quux        | baz             | bar            | 6th line        |quux        | baz             | bar            | 6th line        |quux        | baz             | bar            |
+| 7th line        |quux        | baz             | bar            | 7th line        |quux        | baz             | bar            | 7th line        |quux        | baz             | bar            | 7th line        |quux        | baz             | bar            |
+| 8th line        |quux        | baz             | bar            | 8th line        |quux        | baz             | bar            | 8th line        |quux        | baz             | bar            | 8th line        |quux        | baz             | bar            |
+| 9th line        |quux        | baz             | bar            | 9th line        |quux        | baz             | bar            | 9th line        |quux        | baz             | bar            | 9th line        |quux        | baz             | bar            |
+| 10th line       |quux        | baz             | bar            | 10th line       |quux        | baz             | bar            | 10th line       |quux        | baz             | bar            | 10th line       |quux        | baz             | bar            |
+{:.flip-table}
 
 ### Math
-
 Inline math $$ f(x) = x^2 $$ and math blocks:
 
-$$\begin{aligned} \phi(x,y) &= \phi \left(\sum*{i=1}^n x_ie_i, \sum*{j=1}^n y*je_j \right) \\[2em] &= \sum*{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) \\[2em] &= (x_1, \ldots, x_n) \left(\begin{array}{ccc} \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\ \vdots & \ddots & \vdots \\ \phi(e_n, e_1) & \cdots & \phi(e_n, e_n) \end{array}\right) \left(\begin{array}{c} y_1 \\ \vdots \\ y_n \end{array}\right)\end{aligned} $$
+$$
+\begin{aligned}
+  \phi(x,y) &= \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right) \\[2em]
+            &= \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j)            \\[2em]
+            &= (x_1, \ldots, x_n)
+               \left(\begin{array}{ccc}
+                 \phi(e_1, e_1)  & \cdots & \phi(e_1, e_n) \\
+                 \vdots          & \ddots & \vdots         \\
+                 \phi(e_n, e_1)  & \cdots & \phi(e_n, e_n)
+               \end{array}\right)
+               \left(\begin{array}{c}
+                 y_1    \\
+                 \vdots \\
+                 y_n
+               \end{array}\right)
+\end{aligned}
+$$
