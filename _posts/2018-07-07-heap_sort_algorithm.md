@@ -7,6 +7,8 @@ description: >
 tags: [neweins]
 ---
 
+# heap sort 알고리즘
+
 ## heap의 개념
 
 - heap은 우선 순위 큐(Priority Queue)의 일종으로 우선 순위가 높은 요소를 효율적으로 선택할 수 있는 자료구조이다.
@@ -15,7 +17,6 @@ tags: [neweins]
 
 ![](/assets/img/tree.png)
 
-<br>
 ## Tree 구조를 배열로 구현하는 방법
 tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Traverse)으로 root 노드를 1번으로 시작해서 번호를 붙이면 다음과 같은 규칙대로 저장되게 된다.
 
@@ -31,7 +32,6 @@ tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Trave
 |:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
 |인덱스|[0]|[1]|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|
 
-<br>
 ## Heap(배열로 구현된 heap)에서 데이터가 삭제되는 과정
 1. heap의 최상단(root) 위치에서 데이터를 꺼낸 후
 2. heap의 가장 마지막 위치의 데이터를 root 위치로 올리고
@@ -39,7 +39,6 @@ tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Trave
 4. heap이 깨졌기 때문에 root 위치의 값에 대해 downHeap을 실시한다.
 > down할 위치를 찾을때 자신의 두 자식 중 더 큰 값의 위치와 교환해야 함.
 
-<br>
 ## 데이터 삭제 과정
 1. 9가 삭제되면
 2. 마지막 4가 root로 온다.
@@ -59,7 +58,6 @@ typedef struct _heap{
 }Heap;
 ~~~
 
-<br>
 ### Heap 기능 함수 목록
 
 ~~~c
@@ -79,7 +77,6 @@ BOOL isHeapEmpty(Heap *hPtr); /*힙이 완전히 비어있는가 검사*/
 BOOL isHeapFull(Heap *hPtr);  /*힙이 꽉 차 있는가 검사*/
 ~~~
 
-<br>
 ### test 함수 구현
 ~~~c
 int main()
@@ -109,7 +106,6 @@ int main()
 }
 ~~~
 
-<br>
 ### createHeap 함수
 
 1. 설계
@@ -156,7 +152,6 @@ BOOL createHeap(Heap *hPtr, int size)
 }
 ~~~
 
-<br>
 ### isHeapEmpty 함수
 
 ~~~c
@@ -180,7 +175,6 @@ BOOL isHeapEmpty(Heap *hPtr)
 }
 ~~~
 
-<br>
 ### isHeapFull 함수
 
 ~~~c
@@ -204,7 +198,6 @@ BOOL isHeapFull(Heap *hPtr)
 }
 ~~~
 
-<br>
 ### deleteDownHeap 함수
 
 1. 설계
@@ -252,7 +245,6 @@ BOOL deleteDownHeap(Heap *hPtr, int* getData)
 }
 ~~~
 
-<br>
 ### downHeap 함수
 
 1. 설계
