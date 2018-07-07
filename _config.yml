@@ -22,7 +22,7 @@ baseurl: neweins.github.io
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 QuantumOfNeweins
+title:                 Neweins
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -31,8 +31,7 @@ description:           >
 
 # A shorter description for the sidebar.
 tagline:               >
-  A Jekyll theme with JavaScript powers.
-  Open `_config.yml` to edit this text.
+  
 
 # A list of keywords for your blog
 keywords:              [neweins]
@@ -223,11 +222,11 @@ plugins:
 #   admins:              <id>
 
 # Used on index and about sites
-# social:
-#   name:                <firstname> <lastname>
-#   links:
+ social:
+   name:                Lee JoongKeun
+   links:
 #     - https://twitter.com/<username>
-#     - https://github.com/<username>
+     - https://github.com/neweins
 
 
 # Other Plugins
