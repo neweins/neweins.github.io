@@ -48,6 +48,7 @@ tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Trave
 ![](/assets/img/heap_data_remove.png)
 
 #### 코드 구현
+
 ##### Heap 구현에 사용되는 데이터 형
 ~~~c
 /*heap 관리 구조체*/
@@ -137,6 +138,7 @@ BOOL createHeap(Heap *hPtr, int size)
 ~~~
 
 2. 구현
+
 ~~~c
 BOOL createHeap(Heap *hPtr, int size)
 {
@@ -206,6 +208,7 @@ BOOL isHeapFull(Heap *hPtr)
 ##### deleteDownHeap 함수
 
 1. 설계
+
 ~~~c
 /*----------------------------------------------------------------
 Function name : deleteDownHeap() - 힙에 데이터 하나를 삭제
@@ -227,6 +230,7 @@ BOOL deleteDownHeap(Heap *hPtr, int* getData)
 ~~~
 
 2. 구현
+
 ~~~c
 BOOL deleteDownHeap(Heap *hPtr, int* getData)
 {
@@ -292,7 +296,7 @@ void downHeap(Heap *hPtr, int* getData)
     if(hPtr->heap[childPosition] < hPtr->heap[childPosition+1]){
       ++childPosition;  //오른쪽 자식의 위치 선책
     }
-    if(downData >= hPtr->>heap[childPosition])
+    if(downData >= hPtr->>heap[childPosition])  //더 이상 하강할 필요가 없으면 탈출
       break;
     hPtr->heap[position] = hPtr->heap[childPosition];
     position = childPosition; //자식값의 위치로 position위치를 수정한다.
