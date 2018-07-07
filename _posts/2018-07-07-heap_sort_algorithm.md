@@ -13,7 +13,7 @@ tags: [neweins]
 - heap은 주로 tree구조로 구현하며 나무 구조에서 부모의 키 값을 두 자식의 키 값보다 크게 만들어 주면 된다.
 - 즉, heap의 뿌리(root)는 전체 데이터 중에서 가장 우선 순위가 높은 자료이고 뿌리의 자식은 뿌리 보다 작은 두개의 자료로 구성하면 된다.
 
-![](../assets/img/tree.png){: width="50%" height="50%"}
+![](/assets/img/tree.png)
 
 #### 코드 구현
 
