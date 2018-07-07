@@ -222,11 +222,11 @@ plugins:
 #   admins:              <id>
 
 # Used on index and about sites
- social:
-   name:                Lee JoongKeun
-   links:
+# social:
+#   name:                Lee JoongKeun
+#   links:
 #     - https://twitter.com/<username>
-     - https://github.com/neweins
+#     - https://github.com/neweins
 
 
 # Other Plugins
