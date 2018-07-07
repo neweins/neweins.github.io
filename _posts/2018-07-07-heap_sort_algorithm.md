@@ -7,7 +7,7 @@ description: >
 tags: [neweins]
 ---
 
-#### heap의 개념
+## heap의 개념
 
 - heap은 우선 순위 큐(Priority Queue)의 일종으로 우선 순위가 높은 요소를 효율적으로 선택할 수 있는 자료구조이다.
 - heap은 주로 tree구조로 구현하며 나무 구조에서 부모의 키 값을 두 자식의 키 값보다 크게 만들어 주면 된다.
@@ -16,7 +16,7 @@ tags: [neweins]
 ![](/assets/img/tree.png)
 
 <br>
-#### Tree 구조를 배열로 구현하는 방법
+## Tree 구조를 배열로 구현하는 방법
 tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Traverse)으로 root 노드를 1번으로 시작해서 번호를 붙이면 다음과 같은 규칙대로 저장되게 된다.
 
 1. 번호 j를 갖는 노드의 부모의 번호는 j/2이다.
@@ -32,7 +32,7 @@ tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Trave
 |인덱스|[0]|[1]|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|
 
 <br>
-#### Heap(배열로 구현된 heap)에서 데이터가 삭제되는 과정
+## Heap(배열로 구현된 heap)에서 데이터가 삭제되는 과정
 1. heap의 최상단(root) 위치에서 데이터를 꺼낸 후
 2. heap의 가장 마지막 위치의 데이터를 root 위치로 올리고
 3. 마지막 위치에는 NIN값을 저장한 후
@@ -40,16 +40,16 @@ tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Trave
 > down할 위치를 찾을때 자신의 두 자식 중 더 큰 값의 위치와 교환해야 함.
 
 <br>
-#### 데이터 삭제 과정
+## 데이터 삭제 과정
 1. 9가 삭제되면
 2. 마지막 4가 root로 온다.
 3. 4를 downHeap 실시힌다.
 ![](/assets/img/tree2.png)
 ![](/assets/img/heap_data_remove.png)
 
-#### 코드 구현
+## 코드 구현
 
-##### Heap 구현에 사용되는 데이터 형
+### Heap 구현에 사용되는 데이터 형
 ~~~c
 /*heap 관리 구조체*/
 typedef struct _heap{
@@ -60,7 +60,7 @@ typedef struct _heap{
 ~~~
 
 <br>
-##### Heap 기능 함수 목록
+### Heap 기능 함수 목록
 
 ~~~c
 enum BOOL {FALSE, TRUE};
@@ -80,7 +80,7 @@ BOOL isHeapFull(Heap *hPtr);  /*힙이 꽉 차 있는가 검사*/
 ~~~
 
 <br>
-##### test 함수 구현
+### test 함수 구현
 ~~~c
 int main()
 {
@@ -110,7 +110,7 @@ int main()
 ~~~
 
 <br>
-##### createHeap 함수
+### createHeap 함수
 
 1. 설계
 
@@ -157,7 +157,7 @@ BOOL createHeap(Heap *hPtr, int size)
 ~~~
 
 <br>
-##### isHeapEmpty 함수
+### isHeapEmpty 함수
 
 ~~~c
 /*----------------------------------------------------------------
@@ -181,7 +181,7 @@ BOOL isHeapEmpty(Heap *hPtr)
 ~~~
 
 <br>
-##### isHeapFull 함수
+### isHeapFull 함수
 
 ~~~c
 /*----------------------------------------------------------------
@@ -205,7 +205,7 @@ BOOL isHeapFull(Heap *hPtr)
 ~~~
 
 <br>
-##### deleteDownHeap 함수
+### deleteDownHeap 함수
 
 1. 설계
 
@@ -253,7 +253,7 @@ BOOL deleteDownHeap(Heap *hPtr, int* getData)
 ~~~
 
 <br>
-##### downHeap 함수
+### downHeap 함수
 
 1. 설계
 
