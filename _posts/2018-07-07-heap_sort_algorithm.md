@@ -274,10 +274,10 @@ BOOL downHeap(Heap *hPtr, int* getData)
   // 찾은 하강 위치에 하강데이터 저장
 
 }
-
 ~~~
 
 2. 구현
+
 ~~~c
 void downHeap(Heap *hPtr, int* getData)
 {
