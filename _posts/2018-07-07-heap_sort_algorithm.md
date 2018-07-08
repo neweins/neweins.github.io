@@ -2,8 +2,8 @@
 layout: post
 title: heap sort 알고리즘
 description: >
-  heap sort 알고리즘에 대해서 배워보자.
-  렉토피아 정혜경 강사님의 강의를 듣고 정리해보았다.
+  heap sort 알고리즘를 공부한 것을 정리해 본다.
+  렉토피아 정혜경 강사님의 강의를 듣고
 tags: [neweins]
 ---
 
@@ -35,13 +35,13 @@ tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Trave
 ### Heap(배열로 구현된 heap)에서 데이터가 삭제되는 과정
 1. heap의 최상단(root) 위치에서 데이터를 꺼낸 후
 2. heap의 가장 마지막 위치의 데이터를 root 위치로 올리고
-3. 마지막 위치에는 NIN값을 저장한 후
+3. 마지막 위치에는 MIN값을 저장한 후
 4. heap이 깨졌기 때문에 root 위치의 값에 대해 downHeap을 실시한다.
 > down할 위치를 찾을때 자신의 두 자식 중 더 큰 값의 위치와 교환해야 함.
 
 데이터를 삭제하는 과정을 다음 예를 통해 구체적으로 알아보자.
 
-### 데이터 삭제 과정
+### (예제)데이터 삭제 과정
 1. 9가 삭제되면
 2. 마지막 4가 root로 온다.
 3. 4를 downHeap 실시힌다.
@@ -110,7 +110,7 @@ int main()
 
 #### createHeap 함수
 
-1. 설계
+- 설계
 
 ~~~c
 /*----------------------------------------------------------------
@@ -135,7 +135,7 @@ BOOL createHeap(Heap *hPtr, int size)
 }
 ~~~
 
-2. 구현
+- 구현
 
 ~~~c
 BOOL createHeap(Heap *hPtr, int size)
@@ -202,7 +202,7 @@ BOOL isHeapFull(Heap *hPtr)
 
 #### deleteDownHeap 함수
 
-1. 설계
+- 설계
 
 ~~~c
 /*----------------------------------------------------------------
@@ -224,7 +224,7 @@ BOOL deleteDownHeap(Heap *hPtr, int* getData)
 }
 ~~~
 
-2. 구현
+- 구현
 
 ~~~c
 BOOL deleteDownHeap(Heap *hPtr, int* getData)
@@ -249,7 +249,7 @@ BOOL deleteDownHeap(Heap *hPtr, int* getData)
 
 #### downHeap 함수
 
-1. 설계
+- 설계
 
 ~~~c
 /*----------------------------------------------------------------
@@ -270,7 +270,7 @@ BOOL downHeap(Heap *hPtr, int* getData)
 }
 ~~~
 
-2. 구현
+- 구현
 
 ~~~c
 void downHeap(Heap *hPtr, int* getData)
@@ -296,5 +296,80 @@ void downHeap(Heap *hPtr, int* getData)
     position = childPosition; //자식값의 위치로 position위치를 수정한다.
   }
   hPtr->heap[position] = downData;  //정해진 하강위치에 하강 데이터 저장
+}
+~~~
+
+#### printHeap 함수
+
+- 설계
+
+~~~c
+/*----------------------------------------------------------------
+Function name : printHeap() - 지정 노드를 위치에 맞게 down 시킴
+Parameters : hPtr - 힙 구조체의 주소            
+Returns    : 없음
+----------------------------------------------------------------*/
+BOOL printHeap(Heap *hPtr, int* getData)
+{
+  //hPtr 포인터 NULL check
+
+  //힙 내의 첫 번재 데이터부터 마지막 데이타까지 순차적으로 출력함.
+
+}
+~~~
+
+- 구현
+
+~~~c
+void printHeap(Heap *hPtr, int* getData)
+{
+  int i;
+
+  if(hPtr == NULL)
+    return;
+
+  for(i=0; i<=hPtr->count; ++i){
+    printf("%3d", hPtr->heap[i]);
+  }
+  printf("\n");
+}
+~~~
+
+#### destroyHeap 함수
+
+- 설계
+
+~~~c
+/*----------------------------------------------------------------
+Function name : printHeap() - 지정 노드를 위치에 맞게 down 시킴
+Parameters : hPtr - 힙 구조체의 주소            
+Returns    : 없음
+----------------------------------------------------------------*/
+BOOL printHeap(Heap *hPtr, int* getData)
+{
+  //hPtr 포인터 NULL check
+
+  //힙으로 사용되는 메모리 해제
+  //힙 포인터를 NULL로 초기화
+  //size, count 멤버 0으로 초기화
+
+}
+~~~
+
+- 구현
+
+~~~c
+void printHeap(Heap *hPtr, int* getData)
+{
+  if(hPtr == NULL){
+    return;
+  }
+
+  if(hPtr->heap !=NULL){
+    free(hPtr->heap);
+  }
+  hPtr->heap = NULL;
+  hPtr->size = 0;
+  hPtr->count = 0;
 }
 ~~~
