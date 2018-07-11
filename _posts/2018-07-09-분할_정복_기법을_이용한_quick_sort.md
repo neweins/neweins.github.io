@@ -1,18 +1,18 @@
 ---
 layout: post
-title: heap sort 알고리즘
+title: 분할정복 기법을 이용한 quick sort 알고리즘
 description: >
   렉토피아 정혜경 강사님의 강의를 들어면서
-  heap sort 알고리즘에 대해서 정리해보았다.
+  quick sort 알고리즘에 대해서 정리해보았다.
 
 tags: [neweins]
 ---
 
-# heap sort 알고리즘
+# quick sort 알고리즘
 
-### heap의 개념
+### 분할 정복(divde and conquer)이란?
 
-- heap은 우선 순위 큐(Priority Queue)의 일종으로 우선 순위가 높은 요소를 효율적으로 선택할 수 있는 자료구조이다.
+- 하나의 문제를 작은 문제로 분할하여 문제를 해결하는 알고리즘
 - heap은 주로 tree구조로 구현하며 나무 구조에서 부모의 키 값을 두 자식의 키 값보다 크게 만들어 주면 된다.
 - 즉, heap의 뿌리(root)는 전체 데이터 중에서 가장 우선 순위가 높은 자료이고 뿌리의 자식은 뿌리 보다 작은 두개의 자료로 구성하면 된다.
 
