@@ -13,364 +13,127 @@ tags: [neweins]
 ### 분할 정복(divde and conquer)이란?
 
 - 하나의 문제를 작은 문제로 분할하여 문제를 해결하는 알고리즘
-- heap은 주로 tree구조로 구현하며 나무 구조에서 부모의 키 값을 두 자식의 키 값보다 크게 만들어 주면 된다.
-- 즉, heap의 뿌리(root)는 전체 데이터 중에서 가장 우선 순위가 높은 자료이고 뿌리의 자식은 뿌리 보다 작은 두개의 자료로 구성하면 된다.
+- 주로 재귀 함수(recursive Function)를 이용해서 구현하는 것이 일반적
+- 빠른 실행이나 작은 문제 해결 순서를 선택을 위해 재귀 호출이 아닌 stack, queue 등의 자료 구조를 이용해서 구현하기도 함.
 
-![](/assets/img/tree.png)
+> 분할 정복 기법 설계 전력
+> 1. 해결할 문제를 여러 개의 작은 부분으로 나눈다. - 분할(divide)
+> 2. 나눈 작은 문제를 각각 해결한다. - 정복(conquer)
+> 3. 해결된 해답을 모은다(optional) - 통합(combine)
 
-### Tree 구조를 배열로 구현하는 방법
-tree 구조에서 층(layer)별로 tree를 순회하는 방법(Level order Traverse)으로 root 노드를 1번으로 시작해서 번호를 붙이면 다음과 같은 규칙대로 저장되게 된다.
+### quick sort란 무엇인가?
 
-1. 번호 j를 갖는 노드의 부모의 번호는 j/2이다.
-2. 번호 j를 갖는 노드의 왼쪽 자식의 번호는 j*2이고, 오른쪽 자식은 j*2+1이다.
-3. heap 자료의 개수 n의 절반(n/2)까지가 내부 노드이다.
+- quick sort는 pivot 값을 중심으로 연속적으로 분할하며 정렬하는 기법
+- pivot 값을 중심으로 pivot보다 작은 값을 왼쪽으로, pivot보다 큰 값을 오른쪽에 배열시키는 방식으로 sort가 완료될 때까지 반복적으로 수행한다.
 
-> 내부 노드란? 단말 노드의 반대라는 뜻으로 자식 노드가 하나 이상 있는 노드를 의미한다.
+### 알고리즘에 대해서 알아보자.
 
-- 배열 구조
+1. Sort 구간의 가장 우측의 값을 pivot으로 설정(설정 위치에 따라 성능 저하를 가져오기도 한다.)
+2. 한 구간 안에서 다음을 반복적으로 수행한다.
+  2-1. 구간 좌측부터 pivot보다 큰값을 i를 증가 시키면서 검사
+  2-2. 구간 우측부터 pivot보다 작은 값을 j를 감소시키면서 검사
+  2-3. i<j이면 i의 자리에 있는 값과 j의 자리에 있는 값을 swap한다.
+3. i==j이거나 i>j이면 한 구간에 대한 교환이 완료된 것이므로 i 자리에 있는 값과 **pivot값을 swap한다.** (이때 pivot 값을 중심으로 좌측에는 pivot보다 작은 값이 위치하고 우측에는 pivot보다 큰 값들이 위치한다.)
+4. 이러한 분할 과정을 pivot값을 중심으로 나누어 좌측과 우측 두 구간에 대하여 똑같이 반복한다.(구간의 크기가 1이 될까지 재귀 호출함.)
 
-|값 |사용안함|100|19|36|17|3|25|1|2|7|
-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
-|인덱스|[0]|[1]|[2]|[3]|[4]|[5]|[6]|[7]|[8]|[9]|
-
-### Heap(배열로 구현된 heap)에서 데이터가 삭제되는 과정
-1. heap의 최상단(root) 위치에서 데이터를 꺼낸 후
-2. heap의 가장 마지막 위치의 데이터를 root 위치로 올리고
-3. 마지막 위치에는 MIN값을 저장한 후
-4. heap이 깨졌기 때문에 root 위치의 값에 대해 downHeap을 실시한다.
-> down할 위치를 찾을때 자신의 두 자식 중 더 큰 값의 위치와 교환해야 함.
-
-데이터를 삭제하는 과정을 다음 예를 통해 구체적으로 알아보자.
-
-### (예제)데이터 삭제 과정
-1. 9가 삭제되면
-2. 마지막 4가 root로 온다.
-3. 4를 downHeap 실시힌다.
-![](/assets/img/tree2.png)
-![](/assets/img/heap_data_remove.png)
-
-### 코드 구현
-
-#### Heap 구현에 사용되는 데이터 형
-~~~c
-/*heap 관리 구조체*/
-typedef struct _heap{
-  int* heap;  //배열 데이타의 시작주소
-  int size;
-  int count; //heap에 저장되어 있는 데이터의 수
-}Heap;
-~~~
-
-#### Heap 기능 함수 목록
+![](/assets/img/20180711_213011.png)
 
 ~~~c
-enum BOOL {FALSE, TRUE};
-typedef struct _heap{
-  int* heap;
-  int size;
-  int count; //heap에 저장되어 있는 데이터의 수
-}Heap;
 
-BOOL createHeap(Heap *hPtr, int size);  /*힙 생성 함수*/
-void destroyHeap(Heap *hPtr); /*힙 소멸 함수*/
-BOOL deleteDownHeap(Heap* hPtr, int* getData);  /*힙에 데이터 하나를 삭제*/
-void downHeap(Heap *hPtr, int position);  /*지정 노드를 위치에 맞게 down시킴*/
-void printHeap(const Heap* hPtr); /*힙의 데이터 출력 상위->하위 방향*/
-BOOL isHeapEmpty(Heap *hPtr); /*힙이 완전히 비어있는가 검사*/
-BOOL isHeapFull(Heap *hPtr);  /*힙이 꽉 차 있는가 검사*/
-~~~
+void quickSort(int *ary, int size);
+void output(int *ary, int size);
+void initArray(int *ary, int n);
 
-#### test 함수 구현
-~~~c
 int main()
 {
-  int ary[9] = {1,2,3,4,5,6,7,8,9};
-  int i;
-  int size = sizeof(ary)/sizeof(ary[0]);
-  Heap = heap;
-  int getData;
-  BOOL res;
-
-  createHeap(&heap, size);
-  for(i=0; i<size; ++i)
-    heap.heap[i+1] = ary[i];
-  heap.count = size;
-
-  for(i=heap.size/2; i>=1; --i){
-    downHeap(&heap, i);
-  }
-
-  printf("print heap : ");
-  printHeap(&heap);
-
-  printf("delete heap : ");
+	int dataList[10000];
 
 
+	int startTime, endTime;
+	int size = sizeof(dataList) / sizeof(dataList[0]);
+
+	srand((unsigned int)time(NULL));
+
+	initArray(dataList, size);
+
+	startTime = clock();
+	quickSort(dataList, size); 	/* 퀵 정렬 함수 호출 */
+	endTime = clock();
+	printf("\n\n[ 퀵 정렬  후 출력 ]\n");
+	output(dataList, size);
+	printf("퀵소트 알고리즘 실행 소요시간 : %d(millisecond)\n", (endTime-startTime));
+
+	getchar();
+	startTime = clock();
+	quickSort(dataList, size); 	/* 퀵 정렬 함수 호출 */
+	endTime = clock();
+	printf("\n\n[ 퀵 정렬  후 출력 ]\n");
+	output(dataList, size);
+	printf("퀵소트 알고리즘 실행 소요시간 : %d(millisecond)\n", (endTime-startTime));
+	getchar();
+	return 0;
 }
-~~~
-
-#### createHeap 함수
-
-- 설계
-
-~~~c
-/*----------------------------------------------------------------
-Function name : createHeap() - 힙 생성 함수
-Parameters : hPtr - 힙 구조체의 주소
-             size - 힙의 크기(저장 가능한 데이터의 개수)
-Returns    : 생성 성공하면 TRUE, 실패하면 FALSE
-----------------------------------------------------------------*/
-BOOL createHeap(Heap *hPtr, int size)
+/*----------------------------------------------------------------------
+함수명 및 기능 : quickSort() - 퀵 정렬 함수
+전달인자: ary - 정렬할 데이터 배열의 시작주소
+size - 소트할 데이터의 개수
+리턴값: 없음
+--------------------------------------------------------------------*/
+void quickSort(int *ary, int size)
 {
-  // hPtr 포인터 NULL check
+	int pivot, temp;
+	int i, j;
 
-  // 실제 힙의 크기보다 1크게 동적 할당함
-  // 0번 방은 보초값을 저장하는 용도로 사용
+	if(size<=1) return; // 구간값이 1이하이면 sort가 완료된 것 이므로 return
 
-  //힙 메모리 할당 실패시 FALSE 리턴
+	pivot = ary[size-1];
 
-  //힙의 size 멤버 초기화
-  //힙의 count 멤버 초기화
-  //힙의 0번 방은 보초값(INT_MAX) 저장함
+	// TODO
+	i=-1;
+	j=size-1;
 
+	while(1){
+		while(ary[++i] < pivot);
+		while(--j>=0 && ary[j] > pivot);
+		if(i >=j)
+			break;
+		temp = ary[i];
+		ary[i]=ary[j];
+		ary[j]=temp;
+	}
+	temp=ary[i];
+	ary[i]=ary[size-1];
+	ary[size-1]=temp;
+	quickSort(ary, i);// 좌측 소구간에 대한 퀵 정렬 재귀 호출
+	quickSort(ary+i+1, size-i-1); // 우측 소구간에 대한 퀵 정렬 재귀 호출
 }
-~~~
-
-- 구현
-
-~~~c
-BOOL createHeap(Heap *hPtr, int size)
+/*------------------------------------------------------------------------
+함수명 및 기능 : output() - 배열의 모든 원소 출력하기
+전달인자: ary - 정렬할 데이터 배열의 시작주소
+size - 데이터의 개수
+리턴값: 없음
+------------------------------------------------------------------------*/
+void output(int *ary, int size)
 {
-  if(hPtr == NULL)  
-    return FALSE;
-
-  hPtr->heap = (int*)calloc(size+1, sizeof(int));
-  if(hPtr->heap ==NULL)
-    return FALSE;
-
-  hPtr->size = size;
-  hPtr->count =0;
-  hPtr->heap[0]=INT_MAX;
-  return TRUE;
+	for(int i=0; i<size; i++)
+	{
+		printf(" %d ", ary[i]);
+	}
+	printf("\n");
 }
-~~~
-
-#### isHeapEmpty 함수
-
-~~~c
-/*----------------------------------------------------------------
-Function name : isHeapEmpty() - 힙 완전히 비어있는가 검사
-Parameters : hPtr - 힙 구조체의 주소
-Returns    : 완전히 비어 있으면 TRUE, 비어있지 않으면 FALSE
-----------------------------------------------------------------*/
-BOOL isHeapEmpty(Heap *hPtr)
+/*------------------------------------------------------------------------
+함수명 및 기능 : initArray() - 배열의 원소를 난수로 초기화
+전달인자: ary - 초기화할 데이터 배열의 시작주소
+size - 데이터의 개수
+리턴값: 없음
+------------------------------------------------------------------------*/
+void initArray(int *ary, int n)
 {
-  if(hPtr == NULL){
-    return FALSE;
-  }
-
-  if(hPtr-> count ==0){
-    return TRUE;
-  }
-  else{
-    return FALSE;
-  }
+	int i;
+	for(i=0; i<n; ++i)
+		ary[i] = rand() % 1000 + 1;
 }
-~~~
 
-#### isHeapFull 함수
 
-~~~c
-/*----------------------------------------------------------------
-Function name : isHeapFull() - 힙이 차 있는지 검사
-Parameters : hPtr - 힙 구조체의 주소
-Returns    : 차 있으면 TRUE, 차 있지 않으면 FALSE
-----------------------------------------------------------------*/
-BOOL isHeapFull(Heap *hPtr)
-{
-  if(hPtr == NULL){
-    return FALSE;
-  }
 
-  if(hPtr-> count == hPtr->size){
-    return TRUE;
-  }
-  else{
-    return FALSE;
-  }
-}
-~~~
-
-#### deleteDownHeap 함수
-
-- 설계
-
-~~~c
-/*----------------------------------------------------------------
-Function name : deleteDownHeap() - 힙에 데이터 하나를 삭제
-Parameters : hPtr - 힙 구조체의 주소
-             getData - 힙에 꺼낸 데이터 저장 변수의 주소
-Returns    : 성공적으로 삭제하면 TRUE, 실패하면 FALSE
-----------------------------------------------------------------*/
-BOOL deleteDownHeap(Heap *hPtr, int* getData)
-{
-  //힙이 비어있으면 FALSE 리턴
-  //힙이 비어있지 않으면 다음 내용 실행
-    //1번 방의 값(가장 큰 값)을 getData가 가리키는 곳에 저장
-    //(0번 방은 보초값으로 실제 데이터 아님)
-    //힙의 말단 노드를 root 위치로 올림
-    //root 위치로 옮겨간 데이터가 있던 곳에 보초값(INT_MIN) 저장 count (데이터의 개수) 하나 감소
-    //downHeap()함수를 이용하여  root값에 대해 downHeap 실시
-
-}
-~~~
-
-- 구현
-
-~~~c
-BOOL deleteDownHeap(Heap *hPtr, int* getData)
-{
-  if(hPtr == NULL){
-    return FALSE;
-  }
-
-  if(isHEapEmpty(hPtr)){
-    return FALSE;
-  }
-
-  * getData = hPtr->heap[1]; //1번 방의 값(가장 큰 값)을 getData가 가리키는 곳에 저장
-  hPtr->heap[1] = hPtr->heap[hPtr->count]; //힙의 말단 노드를 root 위치로 올림
-  hPtr->heap[hPtr->count] = INT_MIN;
-  --hPtr->count;
-
-  downHeap(hPtr, 1);
-  return TRUE;
-}
-~~~
-
-#### downHeap 함수
-
-- 설계
-
-~~~c
-/*----------------------------------------------------------------
-Function name : downHeap() - 지정 노드를 위치에 맞게 down 시킴
-Parameters : hPtr - 힙 구조체의 주소
-             position - 하강(down heap) 시킬 데이터의 위치
-Returns    : 없음
-----------------------------------------------------------------*/
-BOOL downHeap(Heap *hPtr, int* getData)
-{
-  //hPtr 포인터 NULL check
-
-  //반복문을 이용하여 하강(down heap)시킬 데이터가 들어갈 위치를 찾음
-    //down할 위치를 찾을 때 자신의 두 자식 중 더 큰 값의 위치와 교환해야 함.
-
-  // 찾은 하강 위치에 하강데이터 저장
-
-}
-~~~
-
-- 구현
-
-~~~c
-void downHeap(Heap *hPtr, int* getData)
-{
-  int childPosition;
-  int downData;
-
-  if(hPtr == NULL){
-    return;
-  }
-
-  downData = hPtr->heap[position];
-
-  while(position <= hPtr->count /2) //parentPosition에 내부 노드이면 down시킴
-  {
-    childPosition = position << 1;  //position*= 2와 같은 연산으로 왼쪽 자식
-    if(hPtr->heap[childPosition] < hPtr->heap[childPosition+1]){
-      ++childPosition;  //오른쪽 자식의 위치 선책
-    }
-    if(downData >= hPtr->>heap[childPosition])  //더 이상 하강할 필요가 없으면 탈출
-      break;
-    hPtr->heap[position] = hPtr->heap[childPosition];
-    position = childPosition; //자식값의 위치로 position위치를 수정한다.
-  }
-  hPtr->heap[position] = downData;  //정해진 하강위치에 하강 데이터 저장
-}
-~~~
-
-#### printHeap 함수
-
-- 설계
-
-~~~c
-/*----------------------------------------------------------------
-Function name : printHeap() - 지정 노드를 위치에 맞게 down 시킴
-Parameters : hPtr - 힙 구조체의 주소            
-Returns    : 없음
-----------------------------------------------------------------*/
-BOOL printHeap(Heap *hPtr, int* getData)
-{
-  //hPtr 포인터 NULL check
-
-  //힙 내의 첫 번재 데이터부터 마지막 데이타까지 순차적으로 출력함.
-
-}
-~~~
-
-- 구현
-
-~~~c
-void printHeap(Heap *hPtr, int* getData)
-{
-  int i;
-
-  if(hPtr == NULL)
-    return;
-
-  for(i=0; i<=hPtr->count; ++i){
-    printf("%3d", hPtr->heap[i]);
-  }
-  printf("\n");
-}
-~~~
-
-#### destroyHeap 함수
-
-- 설계
-
-~~~c
-/*----------------------------------------------------------------
-Function name : printHeap() - 지정 노드를 위치에 맞게 down 시킴
-Parameters : hPtr - 힙 구조체의 주소            
-Returns    : 없음
-----------------------------------------------------------------*/
-BOOL printHeap(Heap *hPtr, int* getData)
-{
-  //hPtr 포인터 NULL check
-
-  //힙으로 사용되는 메모리 해제
-  //힙 포인터를 NULL로 초기화
-  //size, count 멤버 0으로 초기화
-
-}
-~~~
-
-- 구현
-
-~~~c
-void printHeap(Heap *hPtr, int* getData)
-{
-  if(hPtr == NULL){
-    return;
-  }
-
-  if(hPtr->heap !=NULL){
-    free(hPtr->heap);
-  }
-  hPtr->heap = NULL;
-  hPtr->size = 0;
-  hPtr->count = 0;
-}
 ~~~
