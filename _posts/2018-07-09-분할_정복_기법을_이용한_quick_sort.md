@@ -8,7 +8,7 @@ description: >
 tags: [neweins]
 ---
 
-# quick sort 알고리즘
+# 분할정복 기법을 이용한 quick sort 알고리즘
 
 ### 분할 정복(divde and conquer)이란?
 
