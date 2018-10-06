@@ -13,22 +13,9 @@ tags: [neweins]
 
 ~~~c
 
-// (1+2+3 ..... + p) = 1/2 * p * (p+1)
-#define MAX_NUM 1000
+1 2
+1 3 
 
-
-long long sumMultipleOf(int number){
-    long long maxNumOfDivisible = (MAX_NUM-1) / number;
-    
-    return number * maxNumOfDivisible * (maxNumOfDivisible + 1) /2 ;
-//    return number * 1/2 * maxNumOfDivisible * (maxNumOfDivisible + 1); // not correct
-   
-}
-
-int main()
-{
-    printf("%lld\n", sumMultipleOf(3) + sumMultipleOf(5) - sumMultipleOf(15));
-}
 
 
 ~~~
