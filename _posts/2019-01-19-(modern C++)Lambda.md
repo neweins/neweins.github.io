@@ -13,7 +13,7 @@ tags: [neweins]
 
 # [Modern C++] lambda의 특징과 사용법
 
-[참조사이트](https://blog.koriel.kr/modern-cpp-lambdayi-teugjinggwa-sayongbeob/) 
+[출처](https://blog.koriel.kr/modern-cpp-lambdayi-teugjinggwa-sayongbeob/) 
 
 lambda는 람다 표현식 또는 람다 함수, 익명 함수(anonymous function)로 불립니다. 그 성질은 함수 객체(functor)와 동일합니다. 그 이름처럼 몸통은 있지만 이름이 없는 함수입니다. 요즘 대부분의 프로그래밍 언어들은 이 lambda를 지원하고 있습니다.
 
