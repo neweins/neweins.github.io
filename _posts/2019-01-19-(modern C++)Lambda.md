@@ -218,7 +218,7 @@ lambda 외부에 정의되어 있는 변수나 상수를 lambda 내부에서 사
 
 ### 3-1. 참조로 캡처
 
-~~c
+~~~c
 #include <array>
 #include <algorithm>
 
